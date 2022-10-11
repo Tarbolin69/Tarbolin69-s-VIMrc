@@ -51,6 +51,7 @@ Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
+Plug 'junegunn/limelight.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
@@ -73,8 +74,13 @@ set noruler
 set laststatus=0
 set noshowcmd
 set list lcs=tab:\|\
+set termguicolors
 set background=dark
 colorscheme dracula
+"Limelight Color
+	let g:limelight_conceal_guifg = 'DarkGray'
+	let g:limelight_conceal_guifg = '#777777'
+	let g:limelight_default_coefficient = 0.7
 " ============================================================
 "  Startify Home Page
 " ============================================================
@@ -132,7 +138,9 @@ let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, {'z': '~/.config/
 " Perform dot commands over visual blocks:
 	vnoremap . :normal .<CR>
 " Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
+	map <leader>f :Goy<CR>
+	autocmd! User GoyoEnter Limelight
+	autocmd! User GoyoLeave Limelight!
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en,es<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
