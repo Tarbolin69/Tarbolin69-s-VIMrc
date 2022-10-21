@@ -44,8 +44,9 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
+Plug 'aclements/latexrun'
 Plug 'preservim/nerdtree'
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight' // CURRENTLY BROKEN, WAIT FOR UPDATE
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " CURRENTLY BROKEN, WAIT FOR UPDATE
 Plug 'mattn/emmet-vim'
 Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-markdown'
@@ -56,7 +57,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ange-yaghi/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " ============================================================
@@ -74,8 +75,7 @@ set laststatus=0
 set noshowcmd
 set list lcs=tab:\|\
 set termguicolors
-set background=dark
-colorscheme dracula
+colorscheme onedark
 "Limelight Color
 	let g:limelight_conceal_guifg = 'DarkGray'
 	let g:limelight_conceal_guifg = '#777777'
@@ -140,6 +140,8 @@ let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, {'z': '~/.config/
 	map <leader>f :Goy<CR>
 	autocmd! User GoyoEnter Limelight
 	autocmd! User GoyoLeave Limelight!
+" Disable CoC
+	map <leader>x :CocDisable<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en,es<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
