@@ -27,6 +27,7 @@ imap ,, <esc>:keepp /<++><CR>ca<
 " ============================================================
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 if has('nvim')
 	function! UpdateRemotePlugins(...)
@@ -58,7 +59,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
 Plug 'ange-yaghi/onedark.vim'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " ============================================================
 "  Initial Configs
@@ -85,13 +86,13 @@ colorscheme onedark
 " ============================================================
 "Custom Header
 let s:startify_ascii_header = [
-\ '████████╗ █████╗ ██████╗ ██████╗  ██████╗ ██╗     ██╗███╗   ██╗ ██████╗ █████╗ ',
-\ '╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║     ██║████╗  ██║██╔════╝██╔══██╗',
-\ '   ██║   ███████║██████╔╝██████╔╝██║   ██║██║     ██║██╔██╗ ██║███████╗╚██████║',
-\ '   ██║   ██╔══██║██╔══██╗██╔══██╗██║   ██║██║     ██║██║╚██╗██║██╔═══██╗╚═══██║',
-\ '   ██║   ██║  ██║██║  ██║██████╔╝╚██████╔╝███████╗██║██║ ╚████║╚██████╔╝█████╔╝',
-\ '   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚════╝ ',
-\ '',
+\ ' ████████╗ █████╗ ██████╗ ██████╗  ██████╗ ██╗     ██╗███╗   ██╗ ██████╗ █████╗       ██╗  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+\ ' ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║     ██║████╗  ██║██╔════╝██╔══██╗     ██╔╝  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+\ '    ██║   ███████║██████╔╝██████╔╝██║   ██║██║     ██║██╔██╗ ██║███████╗╚██████║    ██╔╝   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+\ '    ██║   ██╔══██║██╔══██╗██╔══██╗██║   ██║██║     ██║██║╚██╗██║██╔═══██╗╚═══██║   ██╔╝    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+\ '    ██║   ██║  ██║██║  ██║██████╔╝╚██████╔╝███████╗██║██║ ╚████║╚██████╔╝█████╔╝  ██╔╝     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+\ '    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚════╝   ╚═╝      ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+\ ''
 \]
 let g:startify_custom_header = map(s:startify_ascii_header +
         \ startify#fortune#quote(), '"   ".v:val')
@@ -140,6 +141,8 @@ let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, {'z': '~/.config/
 	map <leader>f :Goy<CR>
 	autocmd! User GoyoEnter Limelight
 	autocmd! User GoyoLeave Limelight!
+" Enter Fuzzy Find
+	map <leader>z :Files<CR>
 " Disable CoC
 	map <leader>x :CocDisable<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
